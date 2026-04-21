@@ -2,15 +2,15 @@
   "version": 2,
   "builds": [
     {
-      "src": "college_events/wsgi.py",
+      "src": "manage.py",
       "use": "@vercel/python"
     }
   ],
-  "buildCommand": "cd college_events && python manage.py collectstatic --noinput || true",
+  "buildCommand": "echo 'Skipping collectstatic for now'",
   "routes": [
     {
       "src": "/(.*)",
-      "dest": "college_events/wsgi.py"
+      "dest": "manage.py"
     }
   ]
 }
