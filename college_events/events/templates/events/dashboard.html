@@ -1,0 +1,62 @@
+{% extends 'events/base.html' %}
+
+{% block content %}
+
+<h2 class="text-white mb-4">👋 Welcome, {{ user.username }}</h2>
+
+<div class="row">
+
+    <!-- My Events -->
+    <div class="col-md-6">
+        <div class="glass p-3">
+            <h4>🎟️ My Registered Events</h4>
+
+            {% if my_events %}
+               {% for reg in my_events %}
+<div class="card p-2 mb-2">
+    <strong>{{ reg.event.title }}</strong>
+    <p>{{ reg.event.date }}</p>
+
+    <a href="{% url 'ticket' reg.event.id %}" 
+       class="btn btn-info btn-sm">
+       🎟 Ticket
+    </a>
+
+    <a href="{% url 'unregister_event' reg.event.id %}" 
+       class="btn btn-danger btn-sm">
+       Leave
+    </a>
+</div>
+{% endfor %}
+            {% else %}
+                <p>No events joined yet.</p>
+            {% endif %}
+        </div>
+    </div>
+
+    <!-- All Events -->
+    <div class="col-md-6">
+        <div class="glass p-3">
+            <h4>📅 Available Events</h4>
+
+            {% for event in all_events %}
+                <div class="card p-2 mb-2">
+                    <strong>{{ event.title }}</strong>
+                    <p>{{ event.date }}</p>
+
+                    {% if event.id in joined_event_ids %}
+                        <button class="btn btn-secondary btn-sm">Joined</button>
+                    {% else %}
+                        <a href="{% url 'register_event' event.id %}" 
+                           class="btn btn-success btn-sm">
+                           Join Event
+                        </a>
+                    {% endif %}
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+
+</div>
+
+{% endblock %}

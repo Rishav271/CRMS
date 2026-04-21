@@ -1,0 +1,125 @@
+{% extends 'events/base.html' %}
+
+{% block content %}
+
+<style>
+/* Hero Section */
+.hero {
+    text-align: center;
+    padding: 80px 20px;
+    color: white;
+}
+
+/* Gradient animated text */
+.gradient-text {
+    background: linear-gradient(90deg, #ff8a00, #e52e71);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* Glass Cards */
+.glass-card {
+    background: rgba(255,255,255,0.15);
+    backdrop-filter: blur(10px);
+    border-radius: 15px;
+    padding: 20px;
+    color: white;
+    text-align: center;
+    transition: 0.3s;
+}
+
+.glass-card:hover {
+    transform: translateY(-8px) scale(1.02);
+}
+
+/* Buttons */
+.btn-premium {
+    background: linear-gradient(45deg, #ff416c, #ff4b2b);
+    border: none;
+    color: white;
+    font-weight: bold;
+}
+
+.btn-premium:hover {
+    opacity: 0.9;
+}
+
+/* Stats */
+.stats {
+    margin-top: 50px;
+}
+</style>
+
+<!-- 🔥 HERO -->
+<div class="hero animate__animated animate__fadeIn">
+
+    <h1 class="display-2 fw-bold gradient-text animate__animated animate__fadeInDown">
+        🎓 College Events
+    </h1>
+
+    <p class="lead mt-3 animate__animated animate__fadeInUp">
+        Discover • Join • Manage Events Effortlessly
+    </p>
+
+    <div class="mt-4">
+        <a href="/events/" class="btn btn-premium btn-lg me-2">Explore Events</a>
+
+        {% if not user.is_authenticated %}
+            <a href="/login/" class="btn btn-light btn-lg me-2">Login</a>
+            <a href="/register/" class="btn btn-warning btn-lg">Register</a>
+        {% endif %}
+    </div>
+
+</div>
+
+<!-- 💎 FEATURES -->
+<div class="container mt-5">
+    <div class="row text-center">
+
+        <div class="col-md-4">
+            <div class="glass-card">
+                <h4>📅 Discover Events</h4>
+                <p>Find exciting college events happening around you.</p>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="glass-card">
+                <h4>🎟️ Easy Registration</h4>
+                <p>Join events with just one click.</p>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="glass-card">
+                <h4>💳 Secure Payments</h4>
+                <p>Pay for premium events easily (fake/demo).</p>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<!-- 📊 STATS -->
+<div class="container stats text-center text-white">
+    <div class="row">
+
+        <div class="col-md-4">
+            <h2 class="fw-bold">50+</h2>
+            <p>Events</p>
+        </div>
+
+        <div class="col-md-4">
+            <h2 class="fw-bold">200+</h2>
+            <p>Students</p>
+        </div>
+
+        <div class="col-md-4">
+            <h2 class="fw-bold">10+</h2>
+            <p>Colleges</p>
+        </div>
+
+    </div>
+</div>
+
+{% endblock %}
