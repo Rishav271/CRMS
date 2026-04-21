@@ -6,6 +6,7 @@
       "use": "@vercel/python"
     }
   ],
+  "buildCommand": "cd college_events && python manage.py collectstatic --noinput || true",
   "routes": [
     {
       "src": "/(.*)",
